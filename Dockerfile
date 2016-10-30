@@ -4,6 +4,7 @@ MAINTAINER Rafaat Hossain <rafaat123@gmail.com>
 
 # Java & Mysql
 ENV JAVA_VERSION 1.8.0
+ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}
 RUN yum install java-${JAVA_VERSION}-openjdk-devel mariadb-server mariadb mysql-connector-java rpm-build unzip -y && \
     yum clean all
 
@@ -28,3 +29,8 @@ ENV PATH $PATH:$GRADLE_HOME/bin
 
 # Caches
 VOLUME ["/root/.gradle/caches", "/usr/bin/app"]
+
+
+# Start mysql-server with container
+RUN mysql_install_db --user=mysql --basedir=/usr/ --ldata=/var/lib/mysql/
+CMD /usr/libexec/mysqld --user=mysql --basedir=/usr/
