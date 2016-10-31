@@ -4,7 +4,7 @@ MAINTAINER Rafaat Hossain <rafaat123@gmail.com>
 # Java & MySQL
 ENV JAVA_VERSION 1.8.0
 ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}
-RUN yum install java-${JAVA_VERSION}-openjdk-devel mariadb-server mariadb mysql-connector-java rpm-build unzip -y && \
+RUN yum install java-${JAVA_VERSION}-openjdk-devel mariadb-server mariadb mysql-connector-java rpm-build unzip initscripts -y && \
     yum clean all
 
 # Gradle
